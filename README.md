@@ -59,8 +59,8 @@ flowchart LR
 ## How to run
 
 ```bash
-git clone https://github.com/Ryanajaa/crosswalk-speed-detection.git
-cd crosswalk-speed-detection
+git clone https://github.com/Ryanajaa/Comvision_Speed_Detection.git
+cd Comvision_Speed_Detection
 pip install -r requirements.txt
 ```
 
@@ -81,7 +81,7 @@ To use a different camera, change `source_polygon` (the four pixel corners of th
 ## Project structure
 
 ```
-crosswalk-speed-detection/
+Comvision_Speed_Detection/
 ├── main.py              # full pipeline: detect, track, transform, speed, OCR, UI
 ├── fonts/               # TH Sarabun Bold, for Thai plate text
 ├── models/              # put .pt weights here (git-ignored)
