@@ -518,7 +518,7 @@ def draw_annotations(source_frame: np.ndarray,
 				state.car_images[tracker_id] = crop
 
 				# LP detector: run on first appearance and every 5*frame_skip frames
-				if (tracker_id not in state.license_plate_cache or
+				if lp_model is not None and (tracker_id not in state.license_plate_cache or
 						state.frame_count % (5 * CONFIG["frame_skip"]) == 0):
 					try:
 						lp_res   = lp_model(crop, verbose=False)[0]
@@ -597,7 +597,11 @@ def _handle_exit(tracker_id: int, state: AppState,
 def main():
 	# ── Load models ───────────────────────────────────────────────────────────
 	yolo_model = YOLO(os.path.join(_SCRIPT_DIR, CONFIG["yolo_model_path"]))
-	lp_model   = YOLO(os.path.join(_SCRIPT_DIR, CONFIG["license_plate_model_path"]))
+	# Plate detector is optional: it only adds the plate crop to the sidebar
+	lp_path    = os.path.join(_SCRIPT_DIR, CONFIG["license_plate_model_path"])
+	lp_model   = YOLO(lp_path) if os.path.exists(lp_path) else None
+	if lp_model is None:
+		print("[LP]   Plate detector not found → sidebar plate crops disabled.")
 
 	# ── Open video ────────────────────────────────────────────────────────────
 	video_path = os.path.join(_SCRIPT_DIR, CONFIG["video_path"])

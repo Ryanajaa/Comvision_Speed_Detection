@@ -4,6 +4,10 @@ Measures the speed of every car passing a campus crosswalk from an existing CCTV
 
 **▶ [Watch the demo on YouTube](https://youtu.be/qVpjDTiQrhc)**
 
+[![Annotated CCTV frame: a tracked car with its speed, the measurement zone, and a sidebar of recent vehicles](assets/demo.jpg)](https://youtu.be/qVpjDTiQrhc)
+
+*Output frame. License plates and faces are blurred for this README.*
+
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
 ![YOLOv8](https://img.shields.io/badge/YOLOv8n-Ultralytics-111F68)
 ![OpenCV](https://img.shields.io/badge/OpenCV-perspective%20transform-5C3EE8?logo=opencv&logoColor=white)
@@ -66,7 +70,7 @@ pip install -r requirements.txt
 
 1. **Models.** Put two weight files in `models/` (they are not stored in this repo):
    - `yolov8n.pt` from the [Ultralytics release assets](https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8n.pt)
-   - `license_plate_detector.pt`, a YOLOv8 license-plate detector, used only to show the plate crop in the sidebar
+   - `license_plate_detector.pt` (optional), a YOLOv8 license-plate detector used only to show the plate crop in the sidebar. The original download source is no longer available; any YOLOv8 plate-detection checkpoint works, and without the file the program runs with that crop turned off.
 2. **API key (optional).** Copy `.env.example` to `.env` and set `IAPP_API_KEY` from [iApp](https://iapp.co.th). Without a key the program still measures speed and skips OCR.
 3. **Video.** Put a clip in `videos/` and run:
 
@@ -83,6 +87,7 @@ To use a different camera, change `source_polygon` (the four pixel corners of th
 ```
 Comvision_Speed_Detection/
 ├── main.py              # full pipeline: detect, track, transform, speed, OCR, UI
+├── assets/              # README screenshot (plates blurred)
 ├── fonts/               # TH Sarabun Bold, for Thai plate text
 ├── models/              # put .pt weights here (git-ignored)
 ├── videos/              # put input videos here (git-ignored)
@@ -107,4 +112,8 @@ The CCTV footage, car crops and JSON records contain real license plates, so non
 
 **Jitpanu Arunotai**, Robotics & AI Engineering, King Mongkut's Institute of Technology Ladkrabang (KMITL)
 
-TH Sarabun is a Thai government font released for free use and distribution.
+## License
+
+Released under the [MIT License](LICENSE).
+
+The bundled TH Sarabun font is a Thai government font released for free use and distribution, under its own terms.
