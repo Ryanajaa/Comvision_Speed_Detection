@@ -14,7 +14,9 @@ output/
 *.jpeg
 *.png
 *_records.json
+*.gif
 !assets/demo.jpg
+!assets/demo.gif
 
 # Model weights
 models/*

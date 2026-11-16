@@ -4,9 +4,9 @@ Measures the speed of every car passing a campus crosswalk from an existing CCTV
 
 **▶ [Watch the demo on YouTube](https://youtu.be/qVpjDTiQrhc)**
 
-[![Annotated CCTV frame: a tracked car with its speed, the measurement zone, and a sidebar of recent vehicles](assets/demo.jpg)](https://youtu.be/qVpjDTiQrhc)
+[![Cars crossing the measurement zone, each tracked with a live speed label and logged in the sidebar](assets/demo.gif)](https://youtu.be/qVpjDTiQrhc)
 
-*Output frame. License plates and faces are blurred for this README.*
+*Program output, sped up. License plates are blurred for this README.*
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
 ![YOLOv8](https://img.shields.io/badge/YOLOv8n-Ultralytics-111F68)
@@ -51,6 +51,10 @@ flowchart LR
 5. **Read the plate.** When a car leaves the zone, a `BackgroundWorker` thread saves its crop and calls the iApp license-plate OCR REST API. The main loop never waits on the network.
 6. **Report.** The output video shows colour-coded boxes (green below 40 km/h, yellow 40–60, red above 60), a sidebar of recent cars with Thai plate text rendered with Pillow, and one JSON record per vehicle.
 
+![Annotated output frame: a tracked car with its speed, the measurement zone, and the sidebar of recent vehicles](assets/demo.jpg)
+
+*One output frame at full size. License plates and faces are blurred for this README.*
+
 ## What changed from the 2025 version
 
 | | 2025 | 2026 (this repo) |
@@ -87,7 +91,7 @@ To use a different camera, change `source_polygon` (the four pixel corners of th
 ```
 Comvision_Speed_Detection/
 ├── main.py              # full pipeline: detect, track, transform, speed, OCR, UI
-├── assets/              # README screenshot (plates blurred)
+├── assets/              # README GIF and screenshot (plates blurred)
 ├── fonts/               # TH Sarabun Bold, for Thai plate text
 ├── models/              # put .pt weights here (git-ignored)
 ├── videos/              # put input videos here (git-ignored)
