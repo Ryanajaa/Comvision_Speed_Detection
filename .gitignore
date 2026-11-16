@@ -1,0 +1,36 @@
+# Secrets
+.env
+
+# Data, videos and outputs (contain real license plates)
+data/
+videos/*
+!videos/.gitkeep
+output/
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.jpg
+*.jpeg
+*.png
+*_records.json
+
+# Model weights
+models/*
+!models/.gitkeep
+*.pt
+*.pth
+*.onnx
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
